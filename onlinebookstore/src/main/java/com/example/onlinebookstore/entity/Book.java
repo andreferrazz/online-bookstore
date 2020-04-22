@@ -41,4 +41,8 @@ public class Book {
 
     @Column(name = "last_updated")
     private Date updatedOn;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private BookCategory category;
 }
