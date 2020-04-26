@@ -33,7 +33,7 @@ export class BookListComponent implements OnInit {
             this.currentCategoryId = 1;
         }
 
-        this._bookService.getBooks().subscribe(
+        this._bookService.getBooks(this.currentCategoryId).subscribe(
             data => this.books = data
         );
     }
