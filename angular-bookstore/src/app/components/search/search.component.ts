@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
 	}
 
 	searchBooks(keyword: string) {
-		console.log('keyword:', keyword);
+		// console.log('keyword:', keyword);
 		this._router.navigateByUrl('/search/' + keyword);
 	}
 
