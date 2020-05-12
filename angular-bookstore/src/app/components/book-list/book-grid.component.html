@@ -31,8 +31,33 @@
 				No books found
 			</div>
 		</div>
-		<!-- pagination selector goes here -->
-		<jw-pagination [items]="books" (changePage)="pageClick($event)" [pageSize]="pageSize"></jw-pagination>
+
+		<div class="row">
+			<!-- handle the page size -->
+			<div class="col-md-6">
+				<div class="row">
+
+					<div class="col-md-4">
+						<span class="mr-2">Page Size:</span>
+					</div>
+
+					<div class="col-md-8">
+						<select (change)="updatePageSize($event.target.value)" class="form-control-sm"
+							style="width: 20%;">
+							<option selected>5</option>
+							<option>10</option>
+							<option>20</option>
+							<option>50</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- handle pagination -->
+			<div class="col-md-6">
+				<jw-pagination [items]="books" (changePage)="pageClick($event)" [pageSize]="pageSize"></jw-pagination>
+			</div>
+		</div>
 	</div>
 
 </div>

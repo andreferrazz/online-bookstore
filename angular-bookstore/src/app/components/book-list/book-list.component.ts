@@ -65,4 +65,9 @@ export class BookListComponent implements OnInit {
 			data => this.books = data
 		);
 	}
+
+	updatePageSize(pageSize: number) {
+		this.pageSize = pageSize;
+		this.listBooks();
+	}
 }
