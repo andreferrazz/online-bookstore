@@ -10,11 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookListComponent implements OnInit {
 
-	books: Book[];
-	currentCategoryId: number;
-	searchMode: boolean;
-	pageOfItems: Array<Book>;
-	pageSize: number = 6;
+	books: Book[] = [];
+	currentCategoryId: number = 1;
+	searchMode: boolean = false;
+
+	// new properties for server side paging
+	currentPage: number = 1;
+	pageSize: number = 5;
+	totalRecords: number = 0;
 
 	constructor(
 		private _bookService: BookService,
@@ -24,11 +27,6 @@ export class BookListComponent implements OnInit {
 		this._activatedRoute.paramMap.subscribe(() => {
 			this.listBooks();
 		});
-	}
-
-	pageClick(pageOfItems: Array<Book>) {
-		// update the current page of items
-		this.pageOfItems = pageOfItems;
 	}
 
 	listBooks() {
@@ -53,9 +51,8 @@ export class BookListComponent implements OnInit {
 			this.currentCategoryId = 1;
 		}
 
-		this._bookService.getBooks(this.currentCategoryId).subscribe(
-			data => this.books = data
-		);
+		this._bookService.getBooks(this.currentCategoryId, this.currentPage - 1, this.pageSize)
+			.subscribe(this.processPaginate());
 	}
 
 	handleSearchBooks() {
@@ -67,7 +64,16 @@ export class BookListComponent implements OnInit {
 	}
 
 	updatePageSize(pageSize: number) {
-		this.pageSize = pageSize;
+
 		this.listBooks();
+	}
+
+	processPaginate() {
+		return data => {
+			this.books = data._embedded.books;
+			this.currentPage = data.page.number + 1;
+			this.totalRecords = data.page.totalElements;
+			this.pageSize = data.page.size;
+		}
 	}
 }
