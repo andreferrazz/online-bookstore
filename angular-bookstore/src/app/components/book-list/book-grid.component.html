@@ -55,10 +55,7 @@
 
 			<!-- handle pagination -->
 			<div class="col-md-6">
-				<ngb-pagination 
-					[(page)]="currentPage" 
-					[pageSize]="pageSize" 
-					[collectionSize]="totalRecords"
+				<ngb-pagination [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="totalRecords"
 					(pageChange)="listBooks()"></ngb-pagination>
 			</div>
 		</div>

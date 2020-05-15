@@ -16,7 +16,7 @@ export class BookService {
 	constructor(private httpClient: HttpClient) { }
 
 	getBooks(theCategoryId: number, currentPage: number, pageSize: number): Observable<GetResponseBooks> {
-		const searchUrl = `${this.baseUrl}/search/categoryid?id=${theCategoryId}&page=${currentPage}&size${pageSize}`;
+		const searchUrl = `${this.baseUrl}/search/categoryid?id=${theCategoryId}&page=${currentPage}&size=${pageSize}`;
 		return this.httpClient.get<GetResponseBooks>(searchUrl);
 	}
 
