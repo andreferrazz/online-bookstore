@@ -64,8 +64,6 @@ export class BookListComponent implements OnInit {
 	}
 
 	updatePageSize(pageSize: number) {
-		console.log('inside updatePageSize');
-		console.log(`${pageSize}`);
 		this.pageSize = pageSize;
 		this.currentPage = 1;
 		this.listBooks();
