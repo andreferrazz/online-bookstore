@@ -33,8 +33,9 @@
 		</div>
 
 		<div class="row">
-			<!-- handle the page size -->
+
 			<div class="col-md-6">
+
 				<div class="row">
 
 					<div class="col-md-4">
@@ -53,7 +54,6 @@
 				</div>
 			</div>
 
-			<!-- handle pagination -->
 			<div class="col-md-6">
 				<ngb-pagination [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="totalRecords"
 					(pageChange)="listBooks()"></ngb-pagination>

@@ -13,6 +13,7 @@ export class BookListComponent implements OnInit {
 	books: Book[] = [];
 	currentCategoryId: number = 1;
 	searchMode: boolean = false;
+	previousCategory: number = 1;
 
 	// new properties for server side paging
 	currentPage: number = 1;
@@ -50,6 +51,13 @@ export class BookListComponent implements OnInit {
 		} else {
 			this.currentCategoryId = 1;
 		}
+
+		// when navigating to another category, change current page to 1
+		if (this.previousCategory != this.currentCategoryId) {
+			this.currentPage = 1;
+		}
+
+		this.previousCategory = this.currentCategoryId;
 
 		this._bookService.getBooks(this.currentCategoryId, this.currentPage - 1, this.pageSize)
 			.subscribe(this.processPaginate());
