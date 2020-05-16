@@ -18,7 +18,7 @@ export class BookListComponent implements OnInit {
 
 	// new properties for server side paging
 	currentPage: number = 1;
-	pageSize: number = 1;
+	pageSize: number = 5;
 	totalRecords: number = 0;
 
 	constructor(
@@ -71,9 +71,10 @@ export class BookListComponent implements OnInit {
 	handleSearchBooks() {
 		const keyword: string = this._activatedRoute.snapshot.paramMap.get('keyword');
 
-		this._bookService.searchBooks(keyword).subscribe(
-			data => this.books = data
-		);
+		this._bookService.searchBooks(
+			keyword,
+			this.currentPage - 1,
+			this.pageSize).subscribe(this.processPaginate());
 	}
 
 	updatePageSize(pageSize: number) {
