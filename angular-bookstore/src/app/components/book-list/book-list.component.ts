@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../../common/book';
 import { BookService } from '../../services/book.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
 	selector: 'app-book-list',
@@ -22,7 +23,11 @@ export class BookListComponent implements OnInit {
 
 	constructor(
 		private _bookService: BookService,
-		private _activatedRoute: ActivatedRoute) { }
+		private _activatedRoute: ActivatedRoute,
+		_config: NgbPaginationConfig) {
+		_config.maxSize = 3;
+		_config.boundaryLinks = true;
+	}
 
 	ngOnInit(): void {
 		this._activatedRoute.paramMap.subscribe(() => {

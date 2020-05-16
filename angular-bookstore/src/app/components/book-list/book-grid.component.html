@@ -55,8 +55,17 @@
 			</div>
 
 			<div class="col-md-6">
-				<ngb-pagination [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="totalRecords"
-					(pageChange)="listBooks()"></ngb-pagination>
+				<ngb-pagination 
+						[(page)]="currentPage" 
+						[pageSize]="pageSize" 
+						[collectionSize]="totalRecords"
+						(pageChange)="listBooks()" 
+						class="d-flex justify-content-end">
+					<ng-template ngbPaginationPrevious>Prev</ng-template>
+					<ng-template ngbPaginationNext>Next</ng-template>
+					<ng-template ngbPaginationFirst>First</ng-template>
+					<ng-template ngbPaginationLast>Last</ng-template>
+				</ngb-pagination>
 			</div>
 		</div>
 	</div>

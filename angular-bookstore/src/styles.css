@@ -36,12 +36,3 @@ body, html{
 a{
 	cursor: pointer;
 }
-
-.pagination{
-	float: right;
-}
-
-select{
-	border-radius: 5;
-	background-color: white;
-}
