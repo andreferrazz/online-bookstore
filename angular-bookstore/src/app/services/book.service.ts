@@ -30,9 +30,9 @@ export class BookService {
 		);
 	}
 
-	searchBooks(keyword: string): Observable<Book[]> {
-		const searchUrl = `${this.baseUrl}/search/searchbykeyword?name=${keyword}`;
-		return this.getBooksList(searchUrl);
+	searchBooks(keyword: string, currentPage: number, pageSize: number): Observable<GetResponseBooks> {
+		const searchUrl = `${this.baseUrl}/search/searchbykeyword?name=${keyword}&page=${currentPage}&size=${pageSize}`;
+		return this.httpClient.get<GetResponseBooks>(searchUrl);
 	}
 
 	get(bookId: number): Observable<Book> {

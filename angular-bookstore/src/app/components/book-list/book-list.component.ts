@@ -18,7 +18,7 @@ export class BookListComponent implements OnInit {
 
 	// new properties for server side paging
 	currentPage: number = 1;
-	pageSize: number = 5;
+	pageSize: number = 1;
 	totalRecords: number = 0;
 
 	constructor(
